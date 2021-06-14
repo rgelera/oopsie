@@ -1,7 +1,10 @@
 require_relative './alien'
+require_relative './modules'
 
 class AlienA < Alien
   attr_reader :mouths
+  include CanShootLasers
+  include CanFly
 
   def initialize(name, age, mouths)
     super(name, age)
