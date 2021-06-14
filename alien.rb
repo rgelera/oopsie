@@ -5,9 +5,9 @@ class Alien
     @name = name
     @age = age
     @items = Hash.new
-    @items[:money] = rand(0..100)
-    @items[:apples] = rand(0..10)
-    @items[:oranges] = random(0..10)
+    @items[:money] = 5
+    @items[:apples] = 5
+    @items[:oranges] = 5
   end
 
   def name=(name)
@@ -44,15 +44,19 @@ class Alien
 
   def give_item(item, qty, receiver)
     if @items.has_key?(item) && receiver.items.has_key?(item) && @items[item] >= qty
-      @items[items] -= qty
+      @items[item] -= qty
       receiver.receive_item(item, qty)
     else
-      "Cannot give #{item} to #{receiver.name}."
+      raise "Cannot give #{item} to #{receiver.name}."
     end
   end
 
   def receive_item(item, qty)
     # key check was done in give_item.
-    @items[item] += qty
+    if @items.has_key?(item)
+      @items[item] += qty
+    else
+      raise "#{name} cannot receive #{item}."
+    end
   end
 end

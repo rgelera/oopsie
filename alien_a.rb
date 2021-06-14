@@ -8,7 +8,7 @@ class AlienA < Alien
 
   def initialize(name, age, mouths)
     super(name, age)
-    @items[:grapes] = rand(0..10)
+    @items[:grapes] = 5
     @mouths = mouths
   end
 
@@ -44,6 +44,6 @@ class AlienA < Alien
   def receive_item(item, qty)
     # key check was done in give_item.
     super(item, qty)
-    @items[:grape] += 1 # add a grape too cause why not
+    @items[:grapes] += 1 # add a grape too cause why not
   end
 end
